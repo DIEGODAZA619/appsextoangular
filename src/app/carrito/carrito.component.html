@@ -10,3 +10,34 @@
    <option *ngFor = "let cat of categorias" value="{{cat}}">{{cat}}</option>
 
 </select>
+
+<table class="table">
+   <thead>
+      <tr>
+         <th scope="col">#</th>
+         <th scope="col">NOMBRE</th>
+         <th scope="col">PRECIO</th>
+         <th scope="col">CANTIDAD</th>
+         <th scope="col">CANTIDAD VENTA</th>
+         <th scope="col">SUB TOTAL</th>
+         <th scope="col">OPCIONES</th>
+      </tr>      
+   </thead>
+   <tbody>
+      <tr *ngFor = "let prod of productos; let i = index">
+         <td>{{i+1}}</td>
+         <td>{{prod.nombre}}</td>
+         <td>{{prod.precio}}</td>
+         <td>{{prod.cantidad}}</td>
+         <td>
+            <input type="number" [value] = cant_venta (change)="cambio($event)">
+         </td>         
+         <td>
+            {{prod.precio * cant_venta}}
+         </td>
+         <td>
+            <button class="btn btn-danger" (click)= "eliminar_producto(i)">X ELIMINAR</button>
+         </td>
+      </tr>
+   </tbody>
+</table>
