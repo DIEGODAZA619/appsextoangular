@@ -12,6 +12,9 @@ export class CarritoComponent implements OnInit
   categorias: any = [];
   productos: any = [];
   cant_venta:number = 1; 
+  carrito: any = [];
+  total_pagar: number = 0;
+
 
   constructor() {
     this.titulo = "CARRITO DIEGO DE COMPRAS"
@@ -60,6 +63,30 @@ export class CarritoComponent implements OnInit
   eliminar_producto(i : number)
   {
     this.productos.splice(i, 1);
+  }
+
+  eliminar_carrito(i : number)
+  {
+
+  }
+  agregar_carrito(prod: any)
+  {
+    this.carrito.push({
+      nombre:prod.nombre,
+      precio: prod.precio,
+      cantidad: this.cant_venta,
+      subtotal :prod.precio * this.cant_venta
+    });
+    this.calcular_total_pagar();
+    this.cant_venta = 1;
+  }
+  calcular_total_pagar()
+  {
+    this.total_pagar = 0;
+    for(let i=0; i< this.carrito.length; i++)
+    {
+      this.total_pagar += this.carrito[i].subtotal
+    }
   }
 }
 
