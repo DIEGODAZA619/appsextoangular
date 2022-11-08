@@ -11,6 +11,27 @@
 
 </select>
 
+<h2>REGISTRO DE PRODUCTOS</h2>
+<form class="row g-3" [formGroup] = "productoform">
+   <div class="col-md-4">
+      <label for="inputCity" class="form-label">INGRESE PRODUCTO</label>
+      <input type="text" class="form-control" formControlName = "nombre">
+   </div>
+   <div class="col-md-4">
+      <label for="inputCity" class="form-label">INGRESE PRECIO</label>
+      <input type="text" class="form-control" formControlName = "precio">
+   </div>
+   <div class="col-md-4">
+      <label for="inputCity" class="form-label">INGRESE CANTIDAD</label>
+      <input type="text" class="form-control" formControlName = "cantidad">
+   </div>
+   <div class="col-12">
+      <button class="btn btn-primary" (click) = "agregar_productos()">AGREGAR PRODUCTO</button>
+   </div>
+</form>
+
+
+
 <table class="table">
    <thead>
       <tr>

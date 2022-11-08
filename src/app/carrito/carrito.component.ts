@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-carrito',
@@ -15,6 +16,11 @@ export class CarritoComponent implements OnInit
   carrito: any = [];
   total_pagar: number = 0;
 
+  productoform = new FormGroup({
+    nombre: new FormControl(''),
+    precio: new FormControl(''),
+    cantidad: new FormControl(''),    
+  }); 
 
   constructor() {
     this.titulo = "CARRITO DIEGO DE COMPRAS"
@@ -67,7 +73,8 @@ export class CarritoComponent implements OnInit
 
   eliminar_carrito(i : number)
   {
-
+    this.carrito.splice(i, 1);
+    this.calcular_total_pagar();
   }
   agregar_carrito(prod: any)
   {
@@ -87,6 +94,11 @@ export class CarritoComponent implements OnInit
     {
       this.total_pagar += this.carrito[i].subtotal
     }
+  }
+
+  agregar_productos()
+  {
+    this.productos.push(this.productoform.value);
   }
 }
 
