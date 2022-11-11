@@ -1,0 +1,21 @@
+<p>usuarios works! 2022</p>
+<H1>LISTA DE USUARIOS DEL SISTEMA</H1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NOMBRES</th>
+            <th>PRIMER APELLIDO</th>
+            <th>SEGUNDO APELLIDO</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dat of datos; let i = index">
+            <td>{{i+1}}</td>
+            <td>{{dat.nombres}}</td>
+            <td>{{dat.primer_apellido}}</td>
+            <td>{{dat.segundo_apellido}}</td>
+            
+        </tr>
+    </tbody>
+</table>
