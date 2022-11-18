@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuariosService } from './usuarios.service';
+import { Router } from '@angular/router';
+import { Buffer} from 'Buffer';
 
 @Component({
   selector: 'app-usuarios',
@@ -7,8 +9,9 @@ import { UsuariosService } from './usuarios.service';
   styleUrls: ['./usuarios.component.css']
 })
 export class UsuariosComponent implements OnInit {
-  datos:any = [];
-  constructor(protected usuarios: UsuariosService) 
+  datos:any = []; 
+  token:any;
+  constructor(protected usuarios: UsuariosService, protected router:Router) 
   {
     this.usuarios.lista_usuarios().subscribe
     (
@@ -17,12 +20,31 @@ export class UsuariosComponent implements OnInit {
         this.datos = res.data;
       },
       (error:any)=>{
-        console.log(error);
+        //console.log(error);
+        this.router.navigate(["/login"]);
       }
     );
   }
 
   ngOnInit(): void {
   }
+
+  cerrar_sesion()
+  {
+    this.router.navigate(["/login"]);
+    this.usuarios.eliminarToken().subscribe(
+      (res:any) =>{
+        if(res.error == false)
+        {          
+          this.token =  Buffer.from(res.token).toString('base64');          
+          localStorage.setItem('token',this.token);           
+        }        
+      },
+      (error:any)=>{
+        console.log(error);
+      }
+    )   
+    
+  } 
 
 }

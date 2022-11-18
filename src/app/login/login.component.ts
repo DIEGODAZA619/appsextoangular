@@ -30,10 +30,11 @@ export class LoginComponent implements OnInit {
   {
     this.loginService.login(this.loginForm.value).subscribe(
       (res:any) =>{
-        //console.log(res);
+        
         if(res.error == false)
         {
-          this.token =  Buffer.from(res.token).toString('base64');
+          console.log(res.token);
+          this.token =  Buffer.from(res.token).toString('base64');          
           localStorage.setItem('token',this.token);
           this.router.navigate(["/usuarios"]);
         }
