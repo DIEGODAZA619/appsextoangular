@@ -8,13 +8,15 @@ import { CarritoComponent } from './carrito/carrito.component';
 import { PublicacionesComponent } from './publicaciones/publicaciones.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CarritoComponent,
     PublicacionesComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
